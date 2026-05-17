@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Will You Marry Me?</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="slide-container">
+      <div class="slide active" data-index="0">
+        <div class="slide-content">
+          <p class="question">안녕, 나야 💌</p>
+          <p class="sub">잠깐 시간 좀 줄 수 있어?</p>
+        </div>
+      </div>
+
+      <div class="slide" data-index="1">
+        <div class="slide-content">
+          <p class="question">우리가 처음 만난 날 기억해? 🌸</p>
+          <p class="sub">나는 그날이 아직도 선명해</p>
+        </div>
+      </div>
+
+      <div class="slide" data-index="2">
+        <div class="slide-content">
+          <p class="question">그때부터 지금까지 ✨</p>
+          <p class="sub">너와 함께한 모든 순간이 소중했어</p>
+        </div>
+      </div>
+
+      <div class="slide" data-index="3">
+        <div class="slide-content">
+          <p class="question">앞으로도 내 옆에 있어줄 수 있어? 🌙</p>
+          <p class="sub">평생 함께하고 싶어</p>
+        </div>
+      </div>
+
+      <div class="slide final" data-index="4">
+        <div class="slide-content">
+          <p class="question big">나랑 결혼해줄래? 💍</p>
+          <div class="answer-buttons">
+            <button class="btn-yes" onclick="onYes()">응, 할게 💕</button>
+            <button class="btn-no" onclick="onNo()">조금만 더 생각해볼게</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide celebration" data-index="5">
+        <div class="slide-content">
+          <p class="question big">사랑해 ❤️</p>
+          <p class="sub">영원히 행복하자</p>
+          <div class="hearts" id="hearts"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="nav">
+      <div class="dots" id="dots"></div>
+      <button id="next-btn" onclick="nextSlide()">다음 →</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
