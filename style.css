@@ -212,16 +212,18 @@ html, body {
 }
 
 #next-btn {
+  position: absolute;
   background: var(--surface);
   color: var(--accent);
   border: 1px solid var(--accent);
   border-radius: 4px;
-  padding: 14px 48px;
+  padding: 10px 48px;
   font-family: 'Nanum Myeongjo', serif;
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   cursor: pointer;
+  white-space: nowrap;
   transition: background 0.2s ease, color 0.2s ease, opacity 0.3s ease, transform 0.15s ease;
 }
 
@@ -259,52 +261,58 @@ html, body {
   pointer-events: none;
 }
 
-/* 첫 번째 슬라이드 인트로 버튼 (가로 나란히) */
+/* 버튼 영역 래퍼 — 인트로/다음 버튼을 같은 자리에 겹침 */
+#btn-area {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+/* 인트로 버튼 (가로 나란히) */
 #intro-buttons {
+  position: absolute;
   display: flex;
   flex-direction: row;
   gap: 12px;
-  width: 100%;
-  max-width: 280px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  pointer-events: all;
 }
 
 #intro-buttons.hidden {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .btn-intro {
-  flex: 1;
-  padding: 14px 0;
+  padding: 10px 48px;
   border-radius: 4px;
   font-family: 'Nanum Myeongjo', serif;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
-  letter-spacing: 0.03em;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  letter-spacing: 0.05em;
+  border: none;
+  color: #ffffff;
+  white-space: nowrap;
+  transition: filter 0.15s ease, transform 0.15s ease;
+}
+
+.btn-intro:active {
+  filter: brightness(0.8);
+  transform: scale(0.97);
 }
 
 .btn-intro-yes {
-  background: var(--accent);
-  color: #ffffff;
-  border: none;
-}
-
-.btn-intro-yes:active {
-  background: var(--accent-hover);
-  transform: scale(0.97);
+  background: #27ae60;
+  box-shadow: 0 3px 0 #1e8449;
 }
 
 .btn-intro-no {
-  background: none;
-  border: 1px solid var(--border);
-  color: var(--text-muted);
-}
-
-.btn-intro-no:active {
-  color: var(--text-secondary);
-  border-color: var(--text-muted);
-  transform: scale(0.97);
+  background: #e74c3c;
+  box-shadow: 0 3px 0 #c0392b;
 }
 
 /* 팝업 모달 */
