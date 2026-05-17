@@ -1,9 +1,10 @@
 const slides = document.querySelectorAll('.slide');
 const nextBtn = document.getElementById('next-btn');
+const introButtons = document.getElementById('intro-buttons');
 const dotsContainer = document.getElementById('dots');
 
 const TOTAL = slides.length;
-const LAST_NAV_SLIDE = 5; // last slide that shows the next button (0-indexed)
+const LAST_NAV_SLIDE = 10; // last slide that shows the next button (0-indexed)
 
 let current = 0;
 
@@ -44,8 +45,23 @@ function nextSlide() {
 }
 
 function updateNav() {
-  const isFinalSlides = current >= LAST_NAV_SLIDE;
-  nextBtn.classList.toggle('hidden', isFinalSlides);
+  const showIntro = current === 0;
+  const showNext = current > 0 && current < LAST_NAV_SLIDE;
+  introButtons.classList.toggle('hidden', !showIntro);
+  nextBtn.classList.toggle('hidden', !showNext);
+}
+
+// 첫 번째 슬라이드 버튼
+function introYes() {
+  goTo(1);
+}
+
+function introNo() {
+  document.getElementById('popup-overlay').classList.remove('hidden');
+}
+
+function closePopup() {
+  document.getElementById('popup-overlay').classList.add('hidden');
 }
 
 function onYes() {
@@ -76,20 +92,6 @@ function spawnHearts() {
     }, i * 100);
   }
 }
-
-// Shake animation via JS (no extra CSS class needed at load time)
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    20%       { transform: translateX(-8px); }
-    40%       { transform: translateX(8px); }
-    60%       { transform: translateX(-6px); }
-    80%       { transform: translateX(6px); }
-  }
-  .shake { animation: shake 0.5s ease; }
-`;
-document.head.appendChild(style);
 
 buildDots();
 updateNav();
