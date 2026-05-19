@@ -64,8 +64,8 @@ const POPUP_IMAGES = {
   3: 'images/똥개/2.png',
   4: 'images/똥개/3.png',
   5: 'images/똥개/4.png',
-  6: 'images/똥개/벅벅.png',
-  7: 'images/똥개/씨익.png',
+  6: 'images/똥개/5.png',
+  7: 'images/똥개/6.png',
 };
 
 let current = 0;
