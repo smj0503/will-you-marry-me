@@ -7,6 +7,56 @@ const nav = document.getElementById('nav');
 const TOTAL = slides.length;
 const STORY_LAST = 7; // 스토리 슬라이드 마지막 인덱스 (슬라이드 2~7)
 
+// 타이프라이터 적용 슬라이드(1~7) 원본 HTML 저장
+const TYPEWRITER_SLIDES = {};
+[1, 2, 3, 4, 5, 6, 7].forEach(i => {
+  const els = Array.from(slides[i].querySelectorAll('.question'));
+  if (els.length) TYPEWRITER_SLIDES[i] = els.map(el => ({ el, html: el.innerHTML }));
+});
+
+function typewriter(el, html, speed, onDone) {
+  const tokens = [];
+  let i = 0;
+  while (i < html.length) {
+    if (html[i] === '<') {
+      const end = html.indexOf('>', i);
+      tokens.push({ type: 'tag', value: html.slice(i, end + 1) });
+      i = end + 1;
+    } else {
+      tokens.push({ type: 'char', value: html[i] });
+      i++;
+    }
+  }
+  el.innerHTML = '';
+  let idx = 0;
+  function tick() {
+    if (idx >= tokens.length) {
+      el.innerHTML += '<span class="typewriter-cursor">▼</span>';
+      if (onDone) onDone();
+      return;
+    }
+    const t = tokens[idx++];
+    el.innerHTML += t.value;
+    if (t.type === 'char') setTimeout(tick, speed);
+    else tick();
+  }
+  tick();
+}
+
+function typewriterChain(items, speed) {
+  items.slice(1).forEach(item => { item.el.style.visibility = 'hidden'; });
+  function next(i) {
+    if (i >= items.length) return;
+    if (i > 0) {
+      const cursor = items[i - 1].el.querySelector('.typewriter-cursor');
+      if (cursor) cursor.remove();
+      items[i].el.style.visibility = 'visible';
+    }
+    typewriter(items[i].el, items[i].html, speed, () => next(i + 1));
+  }
+  next(0);
+}
+
 // 슬라이드 번호별 팝업 이미지 매핑
 const POPUP_IMAGES = {
   1: '/images/똥개/0.png',
@@ -46,6 +96,7 @@ function goTo(index) {
     slides[current].classList.add('active');
     updateDots();
     updateNav();
+    onSlideActivate(index);
   }, 500);
 }
 
@@ -56,6 +107,12 @@ function updateNav() {
   nav.classList.toggle('hidden', isTitle);
   introButtons.classList.toggle('hidden', !showIntro);
   storyButtons.classList.toggle('hidden', !showStory);
+}
+
+function onSlideActivate(index) {
+  if (TYPEWRITER_SLIDES[index]) {
+    typewriterChain(TYPEWRITER_SLIDES[index], 150);
+  }
 }
 
 // 타이틀 슬라이드 버튼
@@ -123,7 +180,7 @@ function spawnHearts() {
       el.style.animationDelay = Math.random() * 0.5 + 's';
       document.body.appendChild(el);
       setTimeout(() => el.remove(), 2500);
-    }, i * 100);
+    }, i * 150);
   }
 }
 
