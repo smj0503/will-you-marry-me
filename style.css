@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Pen+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Pen+Script&family=Press+Start+2P&display=swap');
 
 * {
   margin: 0;
@@ -123,6 +123,72 @@ html, body {
   letter-spacing: 0.01em;
 }
 
+/* 타이틀 화면 */
+.title-screen {
+  background: var(--surface);
+}
+
+.title-screen .slide-content::after {
+  display: none;
+}
+
+.game-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  line-height: 2.2;
+  text-align: center;
+  word-break: break-all;
+  margin-bottom: 0;
+}
+
+.title-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.btn-title {
+  flex: 1;
+  max-width: 130px;
+  padding: 12px 0;
+  border-radius: 4px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  text-align: center;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-title:active {
+  transform: scale(0.97);
+}
+
+.btn-title-exit {
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1.5px solid var(--text-primary);
+}
+
+.btn-title-exit:active {
+  background: var(--text-primary);
+  color: var(--surface);
+}
+
+.btn-title-start {
+  background: var(--text-primary);
+  color: var(--surface);
+  border: 1.5px solid var(--text-primary);
+}
+
+.btn-title-start:active {
+  background: var(--accent-hover);
+}
+
 /* 슬라이드 이미지 공통 */
 .intro-gif,
 .slide-img {
@@ -183,6 +249,10 @@ html, body {
 }
 
 /* 하단 네비게이션 */
+#nav.hidden {
+  display: none;
+}
+
 #nav {
   padding: 20px 24px 40px;
   display: flex;
@@ -261,33 +331,38 @@ html, body {
   pointer-events: none;
 }
 
-/* 버튼 영역 래퍼 — 인트로/다음 버튼을 같은 자리에 겹침 */
+/* 버튼 영역 래퍼 — 인트로/스토리 버튼을 같은 자리에 겹침 */
 #btn-area {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 50px;
+  width: min(300px, 88vw);
 }
 
-/* 인트로 버튼 (가로 나란히) */
-#intro-buttons {
+/* 인트로/스토리 버튼 공통 (가로 나란히) */
+#intro-buttons,
+#story-buttons {
   position: absolute;
   display: flex;
   flex-direction: row;
   gap: 12px;
+  width: 100%;
   opacity: 1;
   transition: opacity 0.3s ease;
   pointer-events: all;
 }
 
-#intro-buttons.hidden {
+#intro-buttons.hidden,
+#story-buttons.hidden {
   opacity: 0;
   pointer-events: none;
 }
 
 .btn-intro {
-  padding: 10px 48px;
+  flex: 1;
+  padding: 10px 0;
   border-radius: 4px;
   font-family: 'Nanum Myeongjo', serif;
   font-size: 0.95rem;
@@ -296,7 +371,7 @@ html, body {
   letter-spacing: 0.05em;
   border: none;
   color: #ffffff;
-  white-space: nowrap;
+  text-align: center;
   transition: filter 0.15s ease, transform 0.15s ease;
 }
 
@@ -338,6 +413,20 @@ html, body {
   text-align: center;
   width: min(300px, 80vw);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.popup-img {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.popup-img[src=""] {
+  display: none;
 }
 
 .popup-msg {

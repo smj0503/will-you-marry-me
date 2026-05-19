@@ -3,63 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Will You Marry Me?</title>
+  <title>Project Hyeri Marry</title>
+  <link rel="icon" href="/images/이온/이온1.png" type="image/png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="app">
     <div id="slide-container">
-      <div class="slide active" data-index="0">
+
+      <!-- 슬라이드 0: 타이틀 화면 -->
+      <div class="slide active title-screen" data-index="0">
         <div class="slide-content">
-          <img src="/images/안킬로.gif" alt="" class="intro-gif" />
-          <!-- <p class="question">혜리야 안녕?<br>명진이가 할 말이 있대.<br>들어볼래?</p> -->
+          <p class="game-title">Project<br>Hyeri<br>Marry</p>
+          <div class="title-buttons">
+            <button class="btn-title btn-title-exit" onclick="exitGame()">EXIT</button>
+            <button class="btn-title btn-title-start" onclick="startGame()">START</button>
+          </div>
         </div>
       </div>
 
+      <!-- 슬라이드 1: 인트로 -->
       <div class="slide" data-index="1">
         <div class="slide-content">
-          <p class="question">혜리야 나는...</p>
-          <img src="/images/브라키오사우르스.png" alt="" class="slide-img" />
-          <p class="question">브라키오사우르스처럼<br>키가 크지도 않고,</p>
+          <img src="/images/공룡/안킬로.gif" alt="" class="intro-gif" />
+          <p class="question">혜리야 안녕?<br>명진이가 할 말이 있다는데,<br>한번 들어볼래?</p>
         </div>
       </div>
 
+      <!-- 슬라이드 2~7: 스토리 -->
       <div class="slide" data-index="2">
         <div class="slide-content">
-          <img src="/images/안킬로사우르스.png" alt="" class="slide-img" />
-          <p class="question">안킬로사우르스처럼<br>튼튼하지도 않고,</p>
+          <p class="question">혜리야 나는...</p>
+          <img src="/images/공룡/브라키오사우르스.png" alt="" class="slide-img" />
+          <p class="question">브라키오사우르스처럼<br>키가 크지도 않고,</p>
         </div>
       </div>
 
       <div class="slide" data-index="3">
         <div class="slide-content">
-          <img src="/images/트리케라톱스.png" alt="" class="slide-img" />
-          <p class="question">트리케라톱스처럼<br>화려하지도 않고,</p>
+          <img src="/images/공룡/안킬로사우르스.png" alt="" class="slide-img" />
+          <p class="question">안킬로사우르스처럼<br>튼튼하지도 않고,</p>
         </div>
       </div>
 
       <div class="slide" data-index="4">
         <div class="slide-content">
-          <img src="/images/티라노사우르스.png" alt="" class="slide-img" />
-          <p class="question">티라노사우르스처럼<br>강하지도 않고,</p>
+          <img src="/images/공룡/트리케라톱스.png" alt="" class="slide-img" />
+          <p class="question">트리케라톱스처럼<br>화려하지도 않아...</p>
         </div>
       </div>
 
       <div class="slide" data-index="5">
         <div class="slide-content">
-          <img src="/images/랩터.png" alt="" class="slide-img" />
-          <p class="question">랩터만큼<br>영리하지도 않고,</p>
+          <img src="/images/공룡/티라노사우르스.png" alt="" class="slide-img" />
+          <p class="question">티라노사우르스처럼<br>강하지도 않고,</p>
         </div>
       </div>
 
       <div class="slide" data-index="6">
         <div class="slide-content">
-          <img src="/images/케찰코아틀루스.png" alt="" class="slide-img" />
+          <img src="/images/공룡/랩터.png" alt="" class="slide-img" />
+          <p class="question">랩터만큼<br>영리하지도 않고,</p>
+        </div>
+      </div>
+
+      <div class="slide" data-index="7">
+        <div class="slide-content">
+          <img src="/images/공룡/케찰코아틀루스.png" alt="" class="slide-img" />
           <p class="question">케찰코아틀루스처럼<br>하늘을 날수도 없지만</p>
         </div>
       </div>
 
-      <div class="slide final" data-index="7">
+      <!-- 슬라이드 8: 청혼 -->
+      <div class="slide final" data-index="8">
         <div class="slide-content">
           <p class="question big">나랑 결혼해줄래? 💍</p>
           <div class="answer-buttons">
@@ -69,23 +85,28 @@
         </div>
       </div>
 
-      <div class="slide celebration" data-index="5">
+      <!-- 슬라이드 9: 축하 -->
+      <div class="slide celebration" data-index="9">
         <div class="slide-content">
           <p class="question big">사랑해 ❤️</p>
           <p class="sub">영원히 행복하자</p>
           <div class="hearts" id="hearts"></div>
         </div>
       </div>
+
     </div>
 
     <div id="nav">
       <div class="dots" id="dots"></div>
       <div id="btn-area">
-        <div id="intro-buttons" class="hidden">
-          <button class="btn-intro btn-intro-no" onclick="introNo()">싫어</button>
-          <button class="btn-intro btn-intro-yes" onclick="introYes()">좋아</button>
+<div id="intro-buttons" class="hidden">
+          <button class="btn-intro btn-intro-no" onclick="introNo()">거절</button>
+          <button class="btn-intro btn-intro-yes" onclick="introYes()">들어보기</button>
         </div>
-        <button id="next-btn" onclick="nextSlide()">다음 →</button>
+        <div id="story-buttons" class="hidden">
+          <button class="btn-intro btn-intro-no" onclick="storyNo()">그만 들을래</button>
+          <button class="btn-intro btn-intro-yes" onclick="storyNext()">계속 들어보기</button>
+        </div>
       </div>
     </div>
   </div>
@@ -93,8 +114,9 @@
   <!-- 팝업 모달 -->
   <div id="popup-overlay" class="popup-overlay hidden" onclick="closePopup()">
     <div class="popup-box" onclick="event.stopPropagation()">
-      <p class="popup-msg">들어봐주면 안될까? 🥺</p>
-      <button class="popup-btn" onclick="closePopup()">알겠어</button>
+      <img id="popup-img" class="popup-img" src="" alt="" />
+      <p id="popup-msg" class="popup-msg"></p>
+      <button id="popup-btn" class="popup-btn" onclick="closePopup()">ㅋㅋㅋ 들어볼게</button>
     </div>
   </div>
 
