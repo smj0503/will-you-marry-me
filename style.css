@@ -229,8 +229,8 @@ html, body {
 /* 슬라이드 이미지 공통 */
 .intro-gif,
 .slide-img {
-  width: 300px;
-  height: 300px;
+  width: 340px;
+  height: 340px;
   object-fit: contain;
   margin-bottom: 32px;
 }

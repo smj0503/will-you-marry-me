@@ -9,7 +9,7 @@ const STORY_LAST = 7; // 스토리 슬라이드 마지막 인덱스 (슬라이�
 
 // 타이프라이터 적용 슬라이드(1~7) 원본 HTML 저장
 const TYPEWRITER_SLIDES = {};
-[1, 2, 3, 4, 5, 6, 7].forEach(i => {
+[1, 2, 3, 4, 5, 6, 7, 8].forEach(i => {
   const els = Array.from(slides[i].querySelectorAll('.question'));
   if (els.length) TYPEWRITER_SLIDES[i] = els.map(el => ({ el, html: el.innerHTML }));
 });
