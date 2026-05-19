@@ -59,13 +59,13 @@ function typewriterChain(items, speed) {
 
 // 슬라이드 번호별 팝업 이미지 매핑
 const POPUP_IMAGES = {
-  1: '/images/똥개/0.png',
-  2: '/images/똥개/1.png',
-  3: '/images/똥개/2.png',
-  4: '/images/똥개/3.png',
-  5: '/images/똥개/4.png',
-  6: '/images/똥개/벅벅.png',
-  7: '/images/똥개/씨익.png',
+  1: 'images/똥개/0.png',
+  2: 'images/똥개/1.png',
+  3: 'images/똥개/2.png',
+  4: 'images/똥개/3.png',
+  5: 'images/똥개/4.png',
+  6: 'images/똥개/벅벅.png',
+  7: 'images/똥개/씨익.png',
 };
 
 let current = 0;
@@ -118,7 +118,7 @@ function onSlideActivate(index) {
 // 타이틀 슬라이드 버튼
 function startGame() { goTo(1); }
 function exitGame() {
-  showPopup('/images/똥개/intro.png', '', 'START');
+  showPopup('images/똥개/intro.png', '', 'START');
   shakePopup();
 }
 
