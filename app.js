@@ -5,11 +5,12 @@ const dotsContainer = document.getElementById('dots');
 const nav = document.getElementById('nav');
 
 const TOTAL = slides.length;
-const STORY_LAST = 7; // 스토리 슬라이드 마지막 인덱스 (슬라이드 2~7)
+const STORY_LAST = 8; // 스토리 슬라이드 마지막 인덱스 (슬라이드 2~7)
+const PROPOSAL_SLIDE = TOTAL - 2;
 
-// 타이프라이터 적용 슬라이드(1~7) 원본 HTML 저장
+// 타이프라이터 적용 슬라이드 원본 HTML 저장
 const TYPEWRITER_SLIDES = {};
-[1, 2, 3, 4, 5, 6, 7, 8].forEach(i => {
+[1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(i => {
   const els = Array.from(slides[i].querySelectorAll('.question'));
   if (els.length) TYPEWRITER_SLIDES[i] = els.map(el => ({ el, html: el.innerHTML }));
 });
@@ -43,10 +44,13 @@ function typewriter(el, html, speed, onDone) {
   tick();
 }
 
-function typewriterChain(items, speed) {
+function typewriterChain(items, speed, onDone) {
   items.slice(1).forEach(item => { item.el.style.visibility = 'hidden'; });
   function next(i) {
-    if (i >= items.length) return;
+    if (i >= items.length) {
+      if (onDone) onDone();
+      return;
+    }
     if (i > 0) {
       const cursor = items[i - 1].el.querySelector('.typewriter-cursor');
       if (cursor) cursor.remove();
@@ -66,6 +70,7 @@ const POPUP_IMAGES = {
   5: 'images/똥개/4.png',
   6: 'images/똥개/5.png',
   7: 'images/똥개/6.png',
+  8: 'images/똥개/7.png',
 };
 
 let current = 0;
@@ -102,23 +107,28 @@ function goTo(index) {
 
 function updateNav() {
   const isTitle = current === 0;
+  const hideNav = isTitle || current >= PROPOSAL_SLIDE;
   const showIntro = current === 1;
   const showStory = current >= 2 && current <= STORY_LAST;
-  nav.classList.toggle('hidden', isTitle);
+  nav.classList.toggle('hidden', hideNav);
   introButtons.classList.toggle('hidden', !showIntro);
   storyButtons.classList.toggle('hidden', !showStory);
 }
 
 function onSlideActivate(index) {
+  slides[index].classList.remove('text-complete');
+
   if (TYPEWRITER_SLIDES[index]) {
-    typewriterChain(TYPEWRITER_SLIDES[index], 150);
+    typewriterChain(TYPEWRITER_SLIDES[index], 150, () => {
+      slides[index].classList.add('text-complete');
+    });
   }
 }
 
 // 타이틀 슬라이드 버튼
 function startGame() { goTo(1); }
 function exitGame() {
-  showPopup('images/똥개/intro.png', '', 'START');
+  showPopup('images/똥개/intro.png', '', '돌아가기');
   shakePopup();
 }
 
