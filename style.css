@@ -103,7 +103,6 @@ html, body {
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.7;
-  margin-bottom: 16px;
   word-break: keep-all;
   letter-spacing: -0.01em;
 }
@@ -236,10 +235,10 @@ html, body {
 }
 
 .couple {
-  width: 360px;
-  height: 240px;
+  width: 330px;
+  height: 220px;
   object-fit: contain;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .slide .couple {
@@ -323,6 +322,10 @@ html, body {
 
 /* 하단 네비게이션 */
 #nav.hidden {
+  display: none;
+}
+
+body:has(.title-screen.active) #nav {
   display: none;
 }
 
