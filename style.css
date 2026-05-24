@@ -83,14 +83,14 @@ html, body {
 }
 
 /* 편지지 느낌 — 가로 줄 */
-.slide-content::after {
+/* .slide-content::after {
   content: '';
   display: block;
   width: 48px;
   height: 1px;
   background: var(--border);
   margin: 32px auto 0;
-}
+} */
 
 .slide.final .slide-content::after,
 .slide.celebration .slide-content::after {

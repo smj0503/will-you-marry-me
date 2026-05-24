@@ -138,7 +138,7 @@ function onSlideActivate(index) {
   clearTimeout(autoAdvanceTimer);
 
   if (TYPEWRITER_SLIDES[index]) {
-    const speed = index === LYRIC_SLIDE ? 200 : 150;
+    const speed = index === LYRIC_SLIDE ? 120 : 150;
     typewriterChain(TYPEWRITER_SLIDES[index], speed, () => {
       slides[index].classList.add('text-complete');
     });
