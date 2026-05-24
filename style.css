@@ -273,7 +273,7 @@ html, body {
   width: 300px;
   height: 400px;
   object-fit: contain;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .slide .bride {
@@ -410,6 +410,63 @@ body:has(.title-screen.active) #nav {
   position: relative;
 }
 
+.celebration-img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.celebration .question.big {
+  font-family: 'NeoDunggeunmo', 'Nanum Myeongjo', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.celebration .question,
+.celebration .sub {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.celebration .question {
+  transition: opacity 0.65s ease 0.7s, transform 0.65s ease 0.7s;
+}
+
+.celebration .sub {
+  transition: opacity 0.65s ease 1.25s, transform 0.65s ease 1.25s;
+}
+
+.celebration.text-complete .celebration-img {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.celebration.text-complete .question,
+.celebration.text-complete .sub {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lyric-slide {
+  align-items: center;
+  justify-content: center;
+  padding-top: 34px;
+  padding-bottom: 34px;
+}
+
+.lyric-text {
+  font-family: 'NeoDunggeunmo', 'Nanum Myeongjo', serif;
+  font-size: 0.936rem;
+  line-height: 1.75;
+  margin-bottom: 0;
+  text-align: center;
+}
+
 .hearts {
   margin-top: 32px;
   font-size: 1.8rem;
@@ -417,8 +474,9 @@ body:has(.title-screen.active) #nav {
 }
 
 @keyframes floatHeart {
-  0%   { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(-180px) scale(0.4); opacity: 0; }
+  0%   { transform: translateY(20px) scale(0.8); opacity: 0; }
+  18%  { opacity: 1; }
+  100% { transform: translateY(-120px) scale(1.25); opacity: 0; }
 }
 
 .heart-particle {
