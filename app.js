@@ -5,12 +5,12 @@ const dotsContainer = document.getElementById('dots');
 const nav = document.getElementById('nav');
 
 const TOTAL = slides.length;
-const STORY_LAST = 8; // 스토리 슬라이드 마지막 인덱스 (슬라이드 2~7)
+const STORY_LAST = 9; // 스토리 슬라이드 마지막 인덱스 (슬라이드 2~7)
 const PROPOSAL_SLIDE = TOTAL - 2;
 
 // 타이프라이터 적용 슬라이드 원본 HTML 저장
 const TYPEWRITER_SLIDES = {};
-[1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(i => {
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].forEach(i => {
   const els = Array.from(slides[i].querySelectorAll('.question'));
   if (els.length) TYPEWRITER_SLIDES[i] = els.map(el => ({ el, html: el.innerHTML }));
 });
@@ -71,6 +71,7 @@ const POPUP_IMAGES = {
   6: 'images/똥개/5.png',
   7: 'images/똥개/6.png',
   8: 'images/똥개/7.png',
+  9: 'images/똥개/0.png',
 };
 
 let current = 0;

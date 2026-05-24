@@ -9,7 +9,7 @@
   <meta property="og:image:width" content="900" />
   <meta property="og:image:height" content="1200" />
   <title>Project Hyeri Marry</title>
-  <link rel="icon" href="images/켄모치.png" type="image/png" />
+  <link rel="icon" href="images/켄모치토우야.png" type="image/png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -20,6 +20,7 @@
       <div class="slide active title-screen" data-index="0">
         <div class="slide-content">
           <p class="game-title">Project<br>Hyeri<br>Marry</p>
+          <img src="images/공룡/chrome_dino.gif" alt="" class="title-dino-gif" />
           <div class="title-buttons">
             <button class="btn-title btn-title-exit" onclick="exitGame()">EXIT</button>
             <button class="btn-title btn-title-start" onclick="startGame()">START</button>
@@ -30,8 +31,11 @@
       <!-- 슬라이드 1: 인트로 -->
       <div class="slide" data-index="1">
         <div class="slide-content">
-          <img src="images/이온/이온2.png" alt="" class="intro-gif" />
-          <p class="question">누나 안녕?<br>형아가 오늘 할 말이 있다는데,<br>한번 들어볼래?</p>
+          <img src="images/이온/이온0.png" alt="" class="intro-gif" />
+          <p class="question">누나 안녕?
+            <br>형아가 오늘 할 말이 있다는데,<br>한번 들어볼래?<br>
+            (웬만하면 걍 들어봐주자ㅋㅋ)
+          </p>
         </div>
       </div>
 
@@ -74,16 +78,23 @@
 
       <div class="slide" data-index="7">
         <div class="slide-content">
+          <img src="images/공룡/스피노사우르스.png" alt="" class="slide-img" />
+          <p class="question">스피노사우르스만큼<br>매력적이지도 않고,</p>
+        </div>
+      </div>
+
+      <div class="slide" data-index="8">
+        <div class="slide-content">
           <img src="images/공룡/케찰코아틀루스.png" alt="" class="slide-img" />
           <p class="question">케찰코아틀루스처럼<br>하늘을 날수도 없어.</p>
         </div>
       </div>
 
-      <div class="slide final" data-index="8">
+      <div class="slide final" data-index="9">
         <div class="slide-content">
-          <p class="question">
-            하지만...<br/>공룡들은 다 멸종했잖아 ㅋㅋ<br>
-            나는 영원히 혜리 옆을 지킬게
+          <p class="question">하지만...
+            <br>공룡들은 전부 멸종했잖아? ㅋㅋ
+            <br>나는 영원히<br>혜리 옆을 지킬거야❤️
           </p>
           <img src="images/커플.png" alt="" class="couple" />
         </div>
@@ -94,12 +105,13 @@
       <div class="slide final" data-index="8">
         <div class="slide-content">
           <p class="question">
+            그러니까 혜리야,<br>
             내 신부가 되어줄래?
           </p>
           <img src="images/신부.png" alt="" class="bride" />
           <div class="answer-buttons">
             <button class="btn-yes" onclick="onYes()">응, 할게 💕</button>
-            <button class="btn-no" onclick="onNo()">조금만 더 생각해볼게</button>
+            <button class="btn-no" type="button" disabled>아직은 좀;;</button>
           </div>
         </div>
       </div>
@@ -120,7 +132,7 @@
       <div id="btn-area">
         <div id="intro-buttons" class="hidden">
           <button class="btn-intro btn-intro-no" onclick="introNo()">거절</button>
-          <button class="btn-intro btn-intro-yes" onclick="introYes()">들어보기</button>
+          <button class="btn-intro btn-intro-yes" onclick="introYes()">함 들어보기</button>
         </div>
         <div id="story-buttons" class="hidden">
           <button class="btn-intro btn-intro-no" onclick="storyNo()">그만 들을래</button>
